@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    color: #263238;
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+    position: relative;
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background-color: #e8eff0;
+}
+
+.scene-image {
+    width: min(80%, 500px);
+    max-height: 55vh;
+    object-fit: contain;
+}
+
+.marker {
+    position: absolute;
+    width: clamp(24px, 5vw, 56px);
+    aspect-ratio: 1;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+}
+
+.marker-one { top: 10%; left: 18%; background-color: #e85a4f; }
+.marker-two { top: 15%; right: 20%; background-color: #9c27b0; }
+.marker-three { top: 42%; right: 10%; background-color: #e91e8c; }
+.marker-four { bottom: 12%; right: 24%; background-color: #00a4b8; }
+.marker-five { bottom: 18%; left: 12%; background-color: #2196f3; }
+.marker-six { top: 42%; left: 8%; background-color: #ff6f00; }
+.marker-seven { top: 25%; left: 36%; background-color: #4a9b50; }
+.marker-eight { bottom: 16%; left: 43%; background-color: #e1b400; }
