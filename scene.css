@@ -1,22 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap");
+
 * {
     box-sizing: border-box;
+}
+
+:root {
+    color-scheme: light;
+    --sand: #f2ece1;
+    --espresso: #261c15;
+    --clay: #c85a32;
+    --paper: #fffaf1;
+    --body: "Work Sans", sans-serif;
+    --display: "Fraunces", Georgia, serif;
 }
 
 body {
     max-width: 900px;
     margin: 0 auto;
-    padding: 24px;
-    color: #263238;
-    font-family: Arial, sans-serif;
+    padding: clamp(18px, 4vw, 44px);
+    background:
+        radial-gradient(ellipse at 50% 0, #fff8ed 0, transparent 70%),
+        var(--sand);
+    color: var(--espresso);
+    font-family: var(--body);
+    line-height: 1.6;
+}
+
+header {
+    margin-bottom: 22px;
+}
+
+header p {
+    font-size: 0.85rem;
+}
+
+header a {
+    color: var(--clay);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+h1 {
+    margin: 14px 0;
+    font: clamp(2.2rem, 5vw, 3.8rem)/1.05 var(--display);
+    letter-spacing: -0.04em;
 }
 
 .scene {
     position: relative;
-    min-height: 60vh;
+    min-height: clamp(360px, 60vh, 680px);
     display: grid;
     place-items: center;
     overflow: hidden;
-    background-color: #e8eff0;
+    border: 1px solid #5b453238;
+    background:
+        linear-gradient(90deg, transparent 49.8%, #261c1510 50%, transparent 50.2%),
+        linear-gradient(#261c1509 1px, transparent 1px),
+        linear-gradient(90deg, #261c1509 1px, transparent 1px),
+        var(--paper);
+    background-size: auto, 28px 28px, 28px 28px, auto;
+    box-shadow: 0 20px 50px #392a1b1a, inset 0 1px #fff;
 }
 
 .scene-image {
@@ -29,15 +72,46 @@ body {
     position: absolute;
     width: clamp(24px, 5vw, 56px);
     aspect-ratio: 1;
-    border: 2px solid #ffffff;
+    z-index: 1;
+    border: 2px solid var(--paper);
     border-radius: 50%;
+    box-shadow: 0 4px 10px #261c1540, inset 0 1px #ffffff90;
+    transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.marker-one { top: 10%; left: 18%; background-color: #e85a4f; }
-.marker-two { top: 15%; right: 20%; background-color: #9c27b0; }
-.marker-three { top: 42%; right: 10%; background-color: #e91e8c; }
-.marker-four { bottom: 12%; right: 24%; background-color: #00a4b8; }
-.marker-five { bottom: 18%; left: 12%; background-color: #2196f3; }
-.marker-six { top: 42%; left: 8%; background-color: #ff6f00; }
-.marker-seven { top: 25%; left: 36%; background-color: #4a9b50; }
-.marker-eight { bottom: 16%; left: 43%; background-color: #e1b400; }
+.marker:hover {
+    transform: scale(1.12);
+    box-shadow: 0 8px 16px #261c1540, inset 0 1px #ffffff90;
+}
+
+.marker-one,
+.marker-three,
+.marker-six { background-color: var(--clay); }
+.marker-two,
+.marker-four,
+.marker-eight { background-color: #a76c47; }
+.marker-five,
+.marker-seven { background-color: #744c34; }
+
+@media (max-width: 520px) {
+    body {
+        padding: 18px;
+    }
+
+    .scene {
+        min-height: 54vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+:focus-visible {
+    outline: 3px solid var(--clay);
+    outline-offset: 4px;
+}
